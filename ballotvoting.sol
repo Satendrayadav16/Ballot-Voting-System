@@ -7,8 +7,6 @@ pragma solidity >=0.8.0;
  * @dev Implements voting process along with vote delegation
  */
 contract Ballot {
-    
-
     struct Voter {
         uint weight; // weight is accumulated by delegation
         bool voted;  // if true, that person already voted
@@ -35,8 +33,6 @@ contract Ballot {
     */
      error voteEnded( uint time);
      error voteNotStarted(uint time);
-
-    
 
     Proposal[] public proposals;
 
@@ -122,7 +118,6 @@ contract Ballot {
             _;
         }
 
-
     /**
      * @dev Give your vote (including votes delegated to you) to proposal 'proposals[proposal].name'.
      * @param proposal index of proposal in the proposals array
@@ -134,8 +129,6 @@ contract Ballot {
         require(!sender.voted, "Already voted.");
         sender.voted = true;
         sender.vote = proposal;
-        
-        
         
         // If 'proposal' is out of the range of the array,
         // this will throw automatically and revert all
